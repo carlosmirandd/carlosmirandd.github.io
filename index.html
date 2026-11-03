@@ -51,10 +51,16 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* project cards */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
-a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:var(--mute);outline:none}
-.thumb{aspect-ratio:16/10;background:var(--line);overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.card:hover,.card:has(.stretch:focus-visible){transform:translateY(-3px);border-color:var(--mute)}
+.stretch::after{content:"";position:absolute;inset:0;z-index:0}
+.stretch:focus-visible{outline:none}
+.soc a{position:relative;z-index:1}
+.thumb{aspect-ratio:16/9;background:var(--line);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.thumb{position:relative}
+.thumb img.mob{position:absolute;right:5%;bottom:0;width:auto;height:82%;aspect-ratio:9/19.5;object-fit:cover;object-position:top;border-radius:12px 12px 0 0;border:2px solid var(--card);border-bottom:0;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .25s}
+.card:hover .mob{transform:translateY(-6px)}
 .thumb.ph{display:grid;place-items:center;font-family:Syne,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em}
 .t1{background:linear-gradient(135deg,#0b4f6c,#20bf9f 70%,#f6d55c)}
 .t2{background:linear-gradient(135deg,#4a2fbd,#c0392b)}
@@ -113,37 +119,38 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
     <h2>projetos</h2>
     <div class="grid">
       <div class="card">
-        <div class="thumb"><img src="img/easybeach.webp" alt="Landing page do EasyBeach" width="1000" height="562" loading="lazy"></div>
+        <div class="thumb"><img src="img/easybeach.webp" alt="Landing page do EasyBeach" width="1000" height="536" loading="lazy"></div>
         <div class="body">
-          <h3><a href="https://easybeach.app" rel="noopener">EasyBeach ↗</a></h3>
+          <h3><a class="stretch" href="https://easybeach.app" rel="noopener">EasyBeach</a> <span class="m">↗</span></h3>
           <p>Condições das praias de Niterói em tempo real: mar, marés, tempo, lotação e alertas. iOS e Android. Feito com Isac, Tiago, Diogo e Vitor Hugo.</p>
           <p class="tag soc"><a href="https://instagram.com/easybeach.app" rel="noopener">ig</a> · <a href="https://tiktok.com/@easybeach.app" rel="noopener">tiktok</a> · <a href="https://x.com/easybeachapp" rel="noopener">x</a></p>
         </div>
       </div>
-      <a class="card" href="https://acervif.site" rel="noopener">
+      <div class="card">
         <div class="thumb"><img src="img/acervif.webp" alt="Captura da página inicial do AcervIF" width="1000" height="625" loading="lazy"></div>
         <div class="body">
-          <h3>AcervIF <span class="m">↗</span></h3>
+          <h3><a class="stretch" href="https://acervif.site" rel="noopener">AcervIF</a> <span class="m">↗</span></h3>
           <p>Acervo de provas, horários, calendário e avisos para os cursos de engenharia do IFRJ Niterói.</p>
           <p class="tag">PWA · Firebase · Vercel</p>
         </div>
-      </a>
+      </div>
       <div class="card">
         <div class="thumb"><img src="img/inovaligas.webp" alt="Painel inicial do Inova Ligas" width="1000" height="562" loading="lazy"></div>
         <div class="body">
-          <h3>Inova Ligas</h3>
-          <p>Plataforma de gestão de equipes e competições de inovação, feita com o <a href="https://instagram.com/inovanit.ifrj" rel="noopener" style="border-bottom:1px solid var(--line)">@inovanit.ifrj</a>.</p>
+          <h3><a class="stretch" href="https://instagram.com/inovanit.ifrj" rel="noopener">Inova Ligas</a> <span class="m">↗</span></h3>
+          <p>Plataforma de gestão de equipes e competições de inovação, feita com o @inovanit.ifrj.</p>
           <p class="tag">React · Supabase</p>
         </div>
       </div>
-      <a class="card" href="https://carlosmirandd.github.io/chiquinhaflix" rel="noopener">
-        <div class="thumb"><img src="img/chiquinhaflix.webp" alt="Captura da página inicial do ChiquinhaFlix" width="1000" height="570" loading="lazy"></div>
+      <div class="card">
+        <div class="thumb"><img src="img/chiquinhaflix.webp" alt="Captura da página inicial do ChiquinhaFlix" width="1000" height="570" loading="lazy">
+          <img class="mob" src="img/chiquinhaflix-mobile.webp" alt="Captura do ChiquinhaFlix no celular" width="230" height="500" loading="lazy"></div>
         <div class="body">
-          <h3>ChiquinhaFlix <span class="m">↗</span></h3>
+          <h3><a class="stretch" href="https://carlosmirandd.github.io/chiquinhaflix" rel="noopener">ChiquinhaFlix</a> <span class="m">↗</span></h3>
           <p>Visualizador de séries com modo TV. Nasceu em React Native no ensino médio, em 2023, e foi refeito em 2026.</p>
           <p class="tag">JS puro</p>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
