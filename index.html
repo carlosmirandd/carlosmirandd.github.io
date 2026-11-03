@@ -9,13 +9,13 @@
 <meta property="og:description" content="Desenvolvedor front-end. Apps e sites do design ao deploy.">
 <meta property="og:image" content="img/carlos.webp">
 <meta name="theme-color" content="#070707">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='34' fill='%2336d17a'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='34' fill='%23ffd23f'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#070707;--fg:#f2f2ee;--mute:#8d8d87;--line:#1f1f1d;--card:#0e0e0d;--accent:#36d17a}
-@media(prefers-color-scheme:light){:root{--bg:#f6f6f2;--fg:#111;--mute:#6d6d67;--line:#dcdcd5;--card:#fff;--accent:#0f9d58}}
+:root{--bg:#070707;--fg:#f2f2ee;--mute:#8d8d87;--line:#1f1f1d;--card:#0e0e0d;--accent:#ffd23f}
+@media(prefers-color-scheme:light){:root{--bg:#f6f6f2;--fg:#111;--mute:#6d6d67;--line:#dcdcd5;--card:#fff;--accent:#d9a300}}
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.75 "JetBrains Mono",ui-monospace,Menlo,monospace;-webkit-font-smoothing:antialiased}
@@ -37,8 +37,7 @@ header a:hover,header a:focus-visible{color:var(--fg);outline:none}
 .rule i:last-child{background:linear-gradient(270deg,transparent,var(--accent))}
 .rule b{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 .intro{display:grid;grid-template-columns:132px 1fr;gap:28px;align-items:center}
-.intro img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) contrast(1.05);transition:filter .3s;border:1px solid var(--line)}
-.intro img:hover{filter:none}
+.intro img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:50% 50%;border:1px solid var(--line)}
 .intro p{margin:0 0 10px;max-width:46ch}
 .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:12px;color:var(--mute)}
 .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);animation:p 2s infinite}
@@ -75,14 +74,18 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* lists */
 .rows{list-style:none;margin:0;padding:0}
-.rows li{display:flex;justify-content:space-between;gap:20px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.rows li span:last-child{color:var(--mute);text-align:right;flex-shrink:0}
+.rows li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 20px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.rows li span:last-child{color:var(--mute);text-align:right}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{border:1px solid var(--line);border-radius:99px;padding:3px 13px;font-size:12px}
+.chips a{border:1px solid var(--line);border-radius:99px;padding:3px 13px;font-size:12px;transition:border-color .15s}
+.chips a:hover,.chips a:focus-visible{border-color:var(--mute);outline:none}
+.rows a{border-bottom:1px solid var(--mute)}
+.rows a:hover{color:var(--fg);border-color:var(--fg)}
 
 /* contact */
-.mail{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(15px,4.3vw,36px);letter-spacing:-.01em;border-bottom:2px solid var(--accent);word-break:break-all}
+.mail{display:inline-block;font-size:clamp(12px,4vw,18px);white-space:nowrap;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:color .15s}
+.mail:hover,.mail:focus-visible{color:var(--accent);outline:none}
 .links{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:20px}
 .links a{color:var(--mute);border-bottom:1px solid var(--line)}
 .links a:hover{color:var(--fg)}
@@ -119,7 +122,8 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
     <h2>projetos</h2>
     <div class="grid">
       <div class="card">
-        <div class="thumb"><img src="img/easybeach.webp" alt="Landing page do EasyBeach" width="1000" height="536" loading="lazy"></div>
+        <div class="thumb"><img src="img/easybeach.webp" alt="Landing page do EasyBeach" width="1000" height="536" loading="lazy">
+          <img class="mob" src="img/easybeach-mobile.webp" alt="EasyBeach no celular" width="230" height="500" loading="lazy"></div>
         <div class="body">
           <h3><a class="stretch" href="https://easybeach.app" rel="noopener">EasyBeach</a> <span class="m">↗</span></h3>
           <p>Condições das praias de Niterói em tempo real: mar, marés, tempo, lotação e alertas. iOS e Android. Feito com Isac, Tiago, Diogo e Vitor Hugo.</p>
@@ -127,15 +131,17 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="img/acervif.webp" alt="Captura da página inicial do AcervIF" width="1000" height="625" loading="lazy"></div>
+        <div class="thumb"><img src="img/acervif.webp" alt="Captura da página inicial do AcervIF" width="1000" height="625" loading="lazy">
+          <img class="mob" src="img/acervif-mobile.webp" alt="AcervIF no celular" width="230" height="500" loading="lazy"></div>
         <div class="body">
           <h3><a class="stretch" href="https://acervif.site" rel="noopener">AcervIF</a> <span class="m">↗</span></h3>
           <p>Acervo de provas, horários, calendário e avisos para os cursos de engenharia do IFRJ Niterói.</p>
-          <p class="tag">PWA · Firebase · Vercel</p>
+          <p class="tag soc">PWA · Firebase · Vercel · <a href="https://github.com/carlosmirandd/acervif" rel="noopener">github</a></p>
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="img/inovaligas.webp" alt="Painel inicial do Inova Ligas" width="1000" height="562" loading="lazy"></div>
+        <div class="thumb"><img src="img/inovaligas.webp" alt="Painel inicial do Inova Ligas" width="1000" height="562" loading="lazy">
+          <img class="mob" src="img/inovaligas-mobile.webp" alt="Inova Ligas no celular" width="230" height="500" loading="lazy"></div>
         <div class="body">
           <h3><a class="stretch" href="https://instagram.com/inovanit.ifrj" rel="noopener">Inova Ligas</a> <span class="m">↗</span></h3>
           <p>Plataforma de gestão de equipes e competições de inovação, feita com o @inovanit.ifrj.</p>
@@ -148,7 +154,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
         <div class="body">
           <h3><a class="stretch" href="https://carlosmirandd.github.io/chiquinhaflix" rel="noopener">ChiquinhaFlix</a> <span class="m">↗</span></h3>
           <p>Visualizador de séries com modo TV. Nasceu em React Native no ensino médio, em 2023, e foi refeito em 2026.</p>
-          <p class="tag">JS puro</p>
+          <p class="tag soc">JS puro · <a href="https://github.com/carlosmirandd/chiquinhaflix" rel="noopener">github</a></p>
         </div>
       </div>
     </div>
@@ -157,9 +163,9 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
   <section id="sobre">
     <h2>conquistas e eventos</h2>
     <ul class="rows">
-      <li><span>1º lugar no Inova Norte, SicoobPlay (desafio Sicoob Fluminense)</span><span></span></li>
-      <li><span>3rd IEEE IES Students and Young Professionals Congress</span><span>ago/2026</span></li>
-      <li><span>IEEE Computer Society 80 Years, Rio de Janeiro</span><span></span></li>
+      <li><span>1º lugar no Inova Norte, SicoobPlay (desafio Sicoob Fluminense)</span><span>out/2025 · <a href="https://lnkd.in/p/dEubZiBt" rel="noopener">post</a> · <a href="https://inovanorte2025.paniclobster.com/equipe/48" rel="noopener">vídeo da equipe</a></span></li>
+      <li><span>3rd IEEE IES Students and Young Professionals Congress</span><span>ago/2026 · <a href="https://lnkd.in/p/dzM-SYGh" rel="noopener">post</a></span></li>
+      <li><span>IEEE Computer Society 80 Years, Rio de Janeiro</span><span>ago/2026</span></li>
       <li><span>Festival CriaBrasil, 8ª edição, Museu do Amanhã</span><span>out/2026</span></li>
     </ul>
   </section>
@@ -170,7 +176,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
       <li><span>ÓRIVA, cofundador: estratégia digital e landing pages</span><span>set/2024–abr/2026</span></li>
       <li><span>FAPERJ / IFRJ, aluno pesquisador: apps e sites acadêmicos</span><span>out/2021–mai/2023</span></li>
       <li><span>FACTO, monitor de robótica para escolas públicas; escrevi um capítulo da apostila</span><span>2022</span></li>
-      <li><span>Fotógrafo e videomaker em eventos</span><span></span></li>
+      <li><span>Fotógrafo e videomaker em eventos</span><span>jan/2023–abr/2026</span></li>
     </ul>
   </section>
 
@@ -182,14 +188,13 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
           <li><span>Eng. de Computação, IFRJ</span><span>2025–atual</span></li>
           <li><span>Técnico em Informática, IFRJ</span><span>2021–2023</span></li>
           <li><span>Google UX Design</span><span></span></li>
-          <li><span>Cisco CCNA ITN · Python Essentials</span><span></span></li>
           <li><span>IEEE Student Member (CS &amp; IES)</span><span></span></li>
         </ul>
       </div>
       <div>
         <h2>stack</h2>
         <div class="chips">
-          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Flutter</span><span>Supabase</span><span>Firebase</span><span>Vercel</span><span>Cloudflare</span><span>Figma</span>
+          <a href="https://react.dev" rel="noopener">React</a><a href="https://nextjs.org" rel="noopener">Next.js</a><a href="https://www.typescriptlang.org" rel="noopener">TypeScript</a><a href="https://tailwindcss.com" rel="noopener">Tailwind</a><a href="https://flutter.dev" rel="noopener">Flutter</a><a href="https://supabase.com" rel="noopener">Supabase</a><a href="https://firebase.google.com" rel="noopener">Firebase</a><a href="https://vercel.com" rel="noopener">Vercel</a><a href="https://www.cloudflare.com" rel="noopener">Cloudflare</a><a href="https://www.figma.com" rel="noopener">Figma</a>
         </div>
       </div>
     </div>
