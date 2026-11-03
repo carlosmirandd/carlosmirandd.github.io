@@ -13,9 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.dataset.theme=s}catch(e){}</script>
 <style>
-:root{--bg:#070707;--fg:#f2f2ee;--mute:#8d8d87;--line:#1f1f1d;--card:#0e0e0d;--accent:#ffd23f}
-@media(prefers-color-scheme:light){:root{--bg:#f6f6f2;--fg:#111;--mute:#6d6d67;--line:#dcdcd5;--card:#fff;--accent:#d9a300}}
+:root,:root[data-theme=dark]{--bg:#070707;--fg:#f2f2ee;--mute:#8d8d87;--line:#1f1f1d;--card:#0e0e0d;--accent:#ffd23f;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme]){--bg:#f6f6f2;--fg:#111;--mute:#6d6d67;--line:#dcdcd5;--card:#fff;--accent:#d9a300;color-scheme:light}}
+:root[data-theme=light]{--bg:#f6f6f2;--fg:#111;--mute:#6d6d67;--line:#dcdcd5;--card:#fff;--accent:#d9a300;color-scheme:light}
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.75 "JetBrains Mono",ui-monospace,Menlo,monospace;-webkit-font-smoothing:antialiased}
@@ -25,7 +27,7 @@ a{color:inherit;text-decoration:none}
 
 /* nav */
 header{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:12px;letter-spacing:.08em}
-header nav{display:flex;gap:22px}
+header nav{display:flex;gap:22px;align-items:center}
 header a{color:var(--mute);transition:color .15s}
 header a:hover,header a:focus-visible{color:var(--fg);outline:none}
 
@@ -58,8 +60,10 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .thumb{aspect-ratio:16/9;background:var(--line);overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .thumb{position:relative}
-.thumb img.mob{position:absolute;right:5%;bottom:0;width:auto;height:82%;aspect-ratio:9/19.5;object-fit:cover;object-position:top;border-radius:12px 12px 0 0;border:2px solid var(--card);border-bottom:0;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .25s}
-.card:hover .mob{transform:translateY(-6px)}
+.phone{position:absolute;right:5%;bottom:0;height:82%;aspect-ratio:9/19.5;background:#0a0a0a;border:3px solid #2b2b2b;border-bottom:0;border-radius:16px 16px 0 0;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.07);overflow:hidden;transition:transform .25s}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:38%;height:6%;min-height:5px;background:#0a0a0a;border-radius:0 0 8px 8px;z-index:2}
+.card:hover .phone{transform:translateY(-6px)}
 .thumb.ph{display:grid;place-items:center;font-family:Syne,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em}
 .t1{background:linear-gradient(135deg,#0b4f6c,#20bf9f 70%,#f6d55c)}
 .t2{background:linear-gradient(135deg,#4a2fbd,#c0392b)}
@@ -97,13 +101,20 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
  header nav{gap:14px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+#theme{display:grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--mute);cursor:pointer;transition:color .15s,border-color .15s}
+#theme:hover,#theme:focus-visible{color:var(--fg);border-color:var(--mute);outline:none}
+#theme .i-sun{display:none}
+:root[data-theme=dark] #theme .i-moon{display:none}
+:root[data-theme=dark] #theme .i-sun{display:block}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) #theme .i-moon{display:none}:root:not([data-theme]) #theme .i-sun{display:block}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <span>~/miranda</span>
-    <nav><a href="#projetos">projetos</a><a href="#sobre">sobre</a><a href="#contato">contato</a></nav>
+    <nav><a href="#projetos">projetos</a><a href="#sobre">sobre</a><a href="#contato">contato</a>
+      <button id="theme" type="button" aria-label="Alternar tema claro e escuro" title="Alternar tema"><svg class="i-sun" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></nav>
   </header>
 
   <div class="hero">
@@ -123,7 +134,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
     <div class="grid">
       <div class="card">
         <div class="thumb"><img src="img/easybeach.webp" alt="Landing page do EasyBeach" width="1000" height="536" loading="lazy">
-          <img class="mob" src="img/easybeach-mobile.webp" alt="EasyBeach no celular" width="230" height="500" loading="lazy"></div>
+          <span class="phone"><img src="img/easybeach-mobile.webp" alt="EasyBeach no celular" width="230" height="500" loading="lazy"></span></div>
         <div class="body">
           <h3><a class="stretch" href="https://easybeach.app" rel="noopener">EasyBeach</a> <span class="m">↗</span></h3>
           <p>Condições das praias de Niterói em tempo real: mar, marés, tempo, lotação e alertas. iOS e Android. Feito com Isac, Tiago, Diogo e Vitor Hugo.</p>
@@ -132,7 +143,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
       </div>
       <div class="card">
         <div class="thumb"><img src="img/acervif.webp" alt="Captura da página inicial do AcervIF" width="1000" height="625" loading="lazy">
-          <img class="mob" src="img/acervif-mobile.webp" alt="AcervIF no celular" width="230" height="500" loading="lazy"></div>
+          <span class="phone"><img src="img/acervif-mobile.webp" alt="AcervIF no celular" width="230" height="500" loading="lazy"></span></div>
         <div class="body">
           <h3><a class="stretch" href="https://acervif.site" rel="noopener">AcervIF</a> <span class="m">↗</span></h3>
           <p>Acervo de provas, horários, calendário e avisos para os cursos de engenharia do IFRJ Niterói.</p>
@@ -141,7 +152,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
       </div>
       <div class="card">
         <div class="thumb"><img src="img/inovaligas.webp" alt="Painel inicial do Inova Ligas" width="1000" height="562" loading="lazy">
-          <img class="mob" src="img/inovaligas-mobile.webp" alt="Inova Ligas no celular" width="230" height="500" loading="lazy"></div>
+          <span class="phone"><img src="img/inovaligas-mobile.webp" alt="Inova Ligas no celular" width="230" height="500" loading="lazy"></span></div>
         <div class="body">
           <h3><a class="stretch" href="https://instagram.com/inovanit.ifrj" rel="noopener">Inova Ligas</a> <span class="m">↗</span></h3>
           <p>Plataforma de gestão de equipes e competições de inovação, feita com o @inovanit.ifrj.</p>
@@ -150,7 +161,7 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
       </div>
       <div class="card">
         <div class="thumb"><img src="img/chiquinhaflix.webp" alt="Captura da página inicial do ChiquinhaFlix" width="1000" height="570" loading="lazy">
-          <img class="mob" src="img/chiquinhaflix-mobile.webp" alt="Captura do ChiquinhaFlix no celular" width="230" height="500" loading="lazy"></div>
+          <span class="phone"><img src="img/chiquinhaflix-mobile.webp" alt="Captura do ChiquinhaFlix no celular" width="230" height="500" loading="lazy"></span></div>
         <div class="body">
           <h3><a class="stretch" href="https://carlosmirandd.github.io/chiquinhaflix" rel="noopener">ChiquinhaFlix</a> <span class="m">↗</span></h3>
           <p>Visualizador de séries com modo TV. Nasceu em React Native no ensino médio, em 2023, e foi refeito em 2026.</p>
@@ -219,5 +230,16 @@ footer{margin:88px 0 40px;text-align:center;font-size:11px;letter-spacing:.14em;
 
   <footer>-22.8832, -43.1034 // niterói</footer>
 </div>
+<script>
+(function(){
+  var r=document.documentElement,b=document.getElementById("theme");
+  function cur(){return r.dataset.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}
+  b.addEventListener("click",function(){
+    var n=cur()==="dark"?"light":"dark";
+    r.dataset.theme=n;
+    try{localStorage.setItem("theme",n)}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
