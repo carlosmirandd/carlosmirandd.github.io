@@ -110,6 +110,9 @@ html,body{cursor:var(--cur-nw),auto}
 p,h1,h2,h3,li,footer,span{cursor:text}
 a,button,.card{cursor:var(--cur-link),pointer}
 a *,button *{cursor:inherit}
+.grp{display:grid;grid-template-columns:96px 1fr;gap:6px 16px;align-items:start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.grp>span{color:var(--mute);padding-top:3px}
+@media(max-width:640px){.grp{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -194,21 +197,26 @@ a *,button *{cursor:inherit}
   </section>
 
   <section>
-    <div class="two">
-      <div>
-        <h2>formação</h2>
+    <h2>formação</h2>
         <ul class="rows">
           <li><span><a href="https://portal.ifrj.edu.br/niteroi" rel="noopener">Eng. de Computação, IFRJ</a></span><span>2025–atual</span></li>
           <li><span><a href="https://portal.ifrj.edu.br/niteroi" rel="noopener">Técnico em Informática, IFRJ</a></span><span>2021–2023</span></li>
           <li><span><a href="https://www.ieee.org" rel="noopener">IEEE Student Member (CS &amp; IES)</a></span><span></span></li>
         </ul>
-      </div>
-      <div>
-        <h2>stack</h2>
-        <div class="chips">
-          <a href="https://react.dev" rel="noopener">React</a><a href="https://nextjs.org" rel="noopener">Next.js</a><a href="https://www.typescriptlang.org" rel="noopener">TypeScript</a><a href="https://nodejs.org" rel="noopener">Node.js</a><a href="https://www.python.org" rel="noopener">Python</a><a href="https://tailwindcss.com" rel="noopener">Tailwind</a><a href="https://flutter.dev" rel="noopener">Flutter</a><a href="https://supabase.com" rel="noopener">Supabase</a><a href="https://firebase.google.com" rel="noopener">Firebase</a><a href="https://vercel.com" rel="noopener">Vercel</a><a href="https://www.cloudflare.com" rel="noopener">Cloudflare</a><a href="https://www.figma.com" rel="noopener">Figma</a>
-        </div>
-      </div>
+  </section>
+
+  <section>
+    <h2>stack</h2>
+    <div class="stack">
+      <div class="grp"><span>web</span><div class="chips"><a href="https://react.dev" rel="noopener">React</a><a href="https://nextjs.org" rel="noopener">Next.js</a><a href="https://www.typescriptlang.org" rel="noopener">TypeScript</a><a href="https://developer.mozilla.org/docs/Web/JavaScript" rel="noopener">JavaScript</a><a href="https://tailwindcss.com" rel="noopener">Tailwind</a><a href="https://nodejs.org" rel="noopener">Node.js</a><a href="https://www.python.org" rel="noopener">Python</a></div></div>
+      <div class="grp"><span>mobile</span><div class="chips"><a href="https://capacitorjs.com" rel="noopener">Capacitor</a><a href="https://flutter.dev" rel="noopener">Flutter</a><a href="https://web.dev/progressive-web-apps" rel="noopener">PWA</a></div></div>
+      <div class="grp"><span>dados</span><div class="chips"><a href="https://supabase.com" rel="noopener">Supabase</a><a href="https://firebase.google.com" rel="noopener">Firebase</a><a href="https://www.postgresql.org" rel="noopener">PostgreSQL</a><a href="https://www.mysql.com" rel="noopener">MySQL</a></div></div>
+      <div class="grp"><span>infra</span><div class="chips"><a href="https://vercel.com" rel="noopener">Vercel</a><a href="https://www.cloudflare.com" rel="noopener">Cloudflare</a><a href="https://www.docker.com" rel="noopener">Docker</a><a href="https://git-scm.com" rel="noopener">Git</a><a href="https://www.linux.org" rel="noopener">Linux</a></div></div>
+      <div class="grp"><span>ia</span><div class="chips"><a href="https://claude.ai" rel="noopener">Claude</a><a href="https://gemini.google.com" rel="noopener">Gemini</a><a href="https://openai.com" rel="noopener">OpenAI</a></div></div>
+      <div class="grp"><span>criação</span><div class="chips"><a href="https://www.figma.com" rel="noopener">Figma</a><a href="https://www.canva.com" rel="noopener">Canva</a><a href="https://www.adobe.com/products/photoshop-lightroom.html" rel="noopener">Lightroom</a><a href="https://www.capcut.com" rel="noopener">CapCut</a></div></div>
+      <div class="grp"><span>no-code</span><div class="chips"><a href="https://wordpress.org" rel="noopener">WordPress</a><a href="https://www.framer.com" rel="noopener">Framer</a><a href="https://webflow.com" rel="noopener">Webflow</a></div></div>
+      <div class="grp"><span>hardware</span><div class="chips"><a href="https://www.arduino.cc" rel="noopener">Arduino</a><a href="https://www.espressif.com/en/products/socs/esp32" rel="noopener">ESP32</a></div></div>
+      <div class="grp"><span>aprendendo</span><div class="chips"><a href="https://kotlinlang.org" rel="noopener">Kotlin</a><a href="https://www.swift.org" rel="noopener">Swift</a></div></div>
     </div>
   </section>
 
