@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     version="2.0">
+<channel>
+<title>miranda</title>
+<link>https://carlosmirandd.github.io/journal/</link>
+<atom:link href="https://carlosmirandd.github.io/journal/index.xml" rel="self" type="application/rss+xml"/>
+<description>textos e anotações.</description>
+<generator>journal/build.py</generator>
+<language>pt-BR</language>
+<lastBuildDate>Mon, 16 Nov 2026 23:22:08 +0000</lastBuildDate>
+
+</channel>
+</rss>
