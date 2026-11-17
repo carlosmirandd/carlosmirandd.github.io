@@ -2,6 +2,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:content="http://purl.org/rss/1.0/modules/content/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/"
      version="2.0">
 <channel>
 <title>miranda</title>
@@ -10,7 +11,36 @@
 <description>textos e anotações.</description>
 <generator>journal/build.py</generator>
 <language>pt-BR</language>
-<lastBuildDate>Mon, 16 Nov 2026 23:22:08 +0000</lastBuildDate>
-
+<lastBuildDate>Wed, 22 Jul 2026 00:00:00 +0000</lastBuildDate>
+<item>
+  <title>Por que passei 5 horas codando sem parar ontem e hoje perdi a manhã no Reels?</title>
+  <dc:creator>miranda</dc:creator>
+  <link>https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/</link>
+  <description><![CDATA[ Uma reflexão sobre o hiperfoco, a rotina de quem trabalha com tecnologia e os dados por trás da nossa falta de atenção. ]]></description>
+  <category>cotidiano</category>
+  <category>tecnologia</category>
+  <category>dev</category>
+  <guid>https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/</guid>
+  <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
+  <content:encoded><![CDATA[ <figure><img loading="lazy" width="1600" height="900" alt="Programador que codifica em uma mesa com diversos monitores." src="https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/capa.webp" /></figure>
+<p>Tem dia em que eu sento na cadeira, abro o <em>VSCode</em>, o navegador e simplesmente sumo do mundo. Nesses dias, quando me dou conta, já se passaram 5 horas seguidas. O código flui, a arquitetura faz sentido na cabeça, resolvo um problema atrás do outro e entrego um sistema inteiro, ou a maior parte dele, em uma única lapada. É uma sensação incrível de dia produtivo.</p>
+<p>O problema é o dia seguinte. Eu ligo o computador com a intenção de resolver uma tarefa simples, algo de vinte minutos. Dez minutos depois, me pego assistindo a um vídeo no YouTube sobre um gadget ou uma tecnologia aleatória que nem uso, rolando Reels sobre TI ou pesquisando coisas sem menor sentido para aquele momento. Quando olho o relógio, o dia acabou, a tarefa simples continua pendente e fico com aquela sensação horrível de ter jogado horas no lixo.</p>
+<figure><img loading="lazy" width="987" height="545" alt="Pro gramação ou castinação?" src="https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/imagem-1.webp" /></figure>
+<p>Conversando com outros devs e acompanhando o pessoal da área da computação, percebi que essa oscilação de foco não é uma falha só minha. É quase um padrão não dito da nossa rotina.</p>
+<h2 id="a-conta-nao-fecha-e-a-ciencia-explica">A conta não fecha (e a ciência explica)<a class="headerlink" href="#a-conta-nao-fecha-e-a-ciencia-explica" title="link para esta seção">#</a></h2>
+<p>A gente costuma se culpar muito pela inconstância, mas quando olhamos para os dados do setor, fica claro que o ambiente em que trabalhamos foi desenhado para fragmentar o foco:</p>
+<ul>
+<li>Um <a href="https://dl.acm.org/doi/epdf/10.1145/1357054.1357072" rel="noopener">estudo da Universidade da Califórnia (UCI)</a> mostrou que uma pessoa leva em média <strong>23 minutos e 15 segundos</strong> para recuperar a concentração total depois de ser interrompida. Uma olhada rápida no celular já mata quase meia hora de ritmo.</li>
+<li>Uma <a href="https://beetouch.com.br/cansaco-mesmo-apos-o-descanso-estudo-inedito-mostra-como-a-hiperconectividade-esta-drenando-o-cerebro-dos-adultos-brasileiros/" rel="noopener">pesquisa do Instituto Labee</a> com 356 adultos brasileiros revelou que <strong>76% relatam dificuldade de concentração diariamente</strong>, e <strong>70% afirmam que o uso constante do celular prejudica diretamente a produtividade no trabalho</strong>. Além disso, <strong>87% passam de 1 a 5 horas por dia em redes sociais</strong>, criando um ciclo vicioso de exaustão mental e busca por recompensas rápidas.</li>
+<li>Enquanto <a href="https://www.infobae.com/tecno/2026/06/24/el-ceo-de-sap-anticipa-el-fin-de-los-programadores-tradicionales-en-3-anos-la-ia-hara-todo-el-codigo/" rel="noopener">CEOs como o da SAP preveem o “fim dos programadores tradicionais em 3 anos”</a>, pesquisas mostram que <a href="https://golivesoftware.co/es/blog/developpeurs-et-ia" rel="noopener"><strong>80% dos desenvolvedores já usam IA</strong>, mas apenas <strong>29% confiam plenamente</strong> nas sugestões geradas</a>. A consequência é uma nova camada de trabalho onde você precisa <strong>revisar, depurar e validar</strong> o código da IA, que ironicamente, requer ainda mais foco e atenção do que escrever o código do zero.</li>
+</ul>
+<figure><img loading="lazy" width="740" height="494" alt="Pessoa usando rede social" src="https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/imagem-2.webp" /></figure>
+<h2 id="a-armadilha-da-nossa-propria-ferramenta">A armadilha da nossa própria ferramenta<a class="headerlink" href="#a-armadilha-da-nossa-propria-ferramenta" title="link para esta seção">#</a></h2>
+<p>Diferente de várias outras profissões, a nossa ferramenta de trabalho é a própria internet. Para resolver um bug, precisamos abrir o navegador, ler documentações e pesquisar.</p>
+<p>Só que a linha entre buscar uma resposta e cair no buraco negro do algoritmo é tênue. O cérebro vai atrás de recompensa rápida no primeiro travamento que encontra no código.</p>
+<p>Entender a oscilação não significa aceitar que todo dia vai ser perdido, mas ajuda a tirar o peso da culpa. O hiperfoco de 5 horas é ótimo quando aparece, só que proteger a rotina das pequenas distrações diárias é o que realmente faz a conta fechar no final do mês.</p>
+<p><strong>Obrigado por chegar até aqui! Sinta-se livre para compartilhar minha postagem.</strong></p> ]]></content:encoded>
+  <media:content url="https://carlosmirandd.github.io/journal/por-que-passei-5-horas-codando-sem-parar/capa.webp" medium="image" type="image/webp"/>
+</item>
 </channel>
 </rss>
