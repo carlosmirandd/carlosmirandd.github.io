@@ -100,3 +100,70 @@ footer a:hover{color:var(--fg)}
   .posts time{grid-column:1/-1;margin-bottom:2px}
   .pn{flex-direction:column}.pn a{max-width:100%}.pn .n{text-align:left;margin-left:0}
 }
+
+/* ---- recursos dos posts ---- */
+:root{--c-str:#7ee0a0;--c-num:#7cc4ff;--c-bi:#ff9e64;--c-fn:#e8c46a}
+:root[data-theme=light]{--c-str:#15803d;--c-num:#1d4ed8;--c-bi:#b45309;--c-fn:#7c3aed}
+
+/* imagens e figuras */
+.prose figure{margin:1.8em 0}
+.prose figure img{margin:0 auto}
+.prose figcaption{color:var(--mute);font-size:12px;text-align:center;margin-top:10px;line-height:1.6}
+.prose img{cursor:zoom-in}
+.prose a img{cursor:inherit}
+.only-light{display:none}
+:root[data-theme=light] .only-light{display:block}
+:root[data-theme=light] .only-dark{display:none}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.88);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;border-radius:8px}
+
+/* tabelas */
+.prose .table-wrap{overflow-x:auto;margin:1.4em 0}
+.prose .table-wrap table{display:table;width:100%;margin:0;font-size:13px}
+.prose caption{caption-side:top;text-align:left;color:var(--mute);font-size:12px;padding-bottom:8px}
+.prose thead th{border-bottom:1px solid var(--line)}
+.prose tbody tr:hover td{background:var(--card)}
+
+/* avisos */
+.prose .callout{margin:1.6em 0;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;font-size:14px;line-height:1.75}
+.prose .callout>:last-child{margin-bottom:0}
+.prose .callout-title{margin:0 0 6px;font-size:12px;letter-spacing:.14em;color:var(--accent);text-transform:lowercase}
+.prose .callout-warning,.prose .callout-caution{border-left-color:#ff9e64}
+.prose .callout-warning .callout-title,.prose .callout-caution .callout-title{color:#ff9e64}
+.prose .callout-tip{border-left-color:#7ee0a0}
+.prose .callout-tip .callout-title{color:var(--c-str)}
+.prose .callout-important{border-left-color:#ff6b6b}
+.prose .callout-important .callout-title{color:#ff6b6b}
+
+/* código recolhível, realce e botão de copiar */
+.prose details{margin:1.4em 0;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:0 16px}
+.prose details[open]{padding-bottom:4px}
+.prose summary{cursor:pointer;padding:10px 0;font-size:12px;letter-spacing:.1em;color:var(--mute);list-style:none}
+.prose summary::-webkit-details-marker{display:none}
+.prose summary::before{content:"+ ";color:var(--accent)}
+.prose details[open]>summary::before{content:"− "}
+.prose summary:hover{color:var(--fg)}
+.prose details .highlight,.prose details pre{margin:0 0 12px}
+.highlight{position:relative}
+.highlight pre{margin:1.4em 0}
+.highlight .copy{position:absolute;top:8px;right:8px;font:inherit;font-size:11px;color:var(--mute);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;opacity:0;transition:opacity .15s,color .15s}
+.highlight:hover .copy,.highlight .copy:focus-visible{opacity:1}
+.highlight .copy:hover{color:var(--fg)}
+.highlight .c,.highlight .c1,.highlight .cm,.highlight .cs,.highlight .ch,.highlight .cp{color:var(--mute);font-style:italic}
+.highlight .k,.highlight .kd,.highlight .kn,.highlight .kr,.highlight .kp,.highlight .kt,.highlight .kc,.highlight .ow{color:var(--accent)}
+.highlight .s,.highlight .s1,.highlight .s2,.highlight .sb,.highlight .sc,.highlight .sd,.highlight .se,.highlight .si,.highlight .sx,.highlight .sa{color:var(--c-str)}
+.highlight .m,.highlight .mi,.highlight .mf,.highlight .mh,.highlight .mo,.highlight .il{color:var(--c-num)}
+.highlight .nf,.highlight .fm,.highlight .nc,.highlight .nd{color:var(--c-fn)}
+.highlight .nb,.highlight .bp,.highlight .nt,.highlight .na{color:var(--c-bi)}
+.highlight .gd{color:#ff6b6b}.highlight .gi{color:var(--c-str)}
+
+/* artefatos */
+.prose .embed{margin:1.8em 0}
+.prose .embed iframe{display:block;width:100%;min-height:420px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.prose .embed iframe[height]{min-height:0}
+.prose video,.prose audio{display:block;width:100%;max-width:100%;margin:1.6em 0;border-radius:10px}
+
+/* fórmulas e âncoras */
+.prose .math[data-d="1"]{display:block;overflow-x:auto;margin:1.4em 0;text-align:center}
+.prose .headerlink{margin-left:.5em;opacity:0;color:var(--mute);border:0;transition:opacity .15s}
+.prose h2:hover .headerlink,.prose h3:hover .headerlink,.prose .headerlink:focus-visible{opacity:1}
