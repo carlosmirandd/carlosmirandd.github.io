@@ -167,3 +167,20 @@ footer a:hover{color:var(--fg)}
 .prose .math[data-d="1"]{display:block;overflow-x:auto;margin:1.4em 0;text-align:center}
 .prose .headerlink{margin-left:.5em;opacity:0;color:var(--mute);border:0;transition:opacity .15s}
 .prose h2:hover .headerlink,.prose h3:hover .headerlink,.prose .headerlink:focus-visible{opacity:1}
+
+/* abas */
+.prose .tabs{margin:1.6em 0;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.prose .tablist{display:flex;overflow-x:auto;border-bottom:1px solid var(--line)}
+.prose .tablist button{font:inherit;font-size:12px;letter-spacing:.08em;color:var(--mute);background:none;border:0;border-bottom:2px solid transparent;padding:10px 16px;margin-bottom:-1px;white-space:nowrap;transition:color .15s}
+.prose .tablist button:hover,.prose .tablist button:focus-visible{color:var(--fg);outline:none}
+.prose .tablist button[aria-selected=true]{color:var(--fg);border-bottom-color:var(--accent)}
+.prose .tabpanel{padding:16px 18px}
+.prose .tabpanel[hidden]{display:none}
+.prose .tabpanel>:first-child{margin-top:0}
+.prose .tabpanel>:last-child{margin-bottom:0}
+.prose .tabs:not(.js) .tabpanel+.tabpanel{border-top:1px solid var(--line)}
+.prose .tabs:not(.js) .tabpanel::before{content:attr(data-title);display:block;color:var(--accent);font-size:12px;letter-spacing:.14em;margin-bottom:8px}
+.prose .tabpanel pre{background:var(--bg)}
+.prose .tabpanel .highlight pre{margin:0}
+.prose .tabpanel .table-wrap{margin:0}
+.prose .tabpanel figure{margin:0}
