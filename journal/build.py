@@ -25,6 +25,7 @@ Recursos do texto (veja journal/src/_modelo.md):
   * imagens por tema:     ![alt](claro.png){.only-light}  ![alt](escuro.png){.only-dark}
   * avisos:               > [!note] título   (note, tip, warning, important, caution)
   * código com realce, recolhível com <details markdown="1">
+  * abas:                 ::: tabs  /  === título da aba  /  :::
   * tabelas, notas de rodapé, fórmulas ($$ ... $$ e \\( ... \\))
   * artefatos: <iframe src="arquivo.html" height="420"></iframe>, <video>, <audio>
 """
@@ -135,7 +136,42 @@ def convert_callouts(text):
     return "\n".join(out)
 
 
+def convert_tabs(body):
+    """::: tabs ... === título ... ::: vira um bloco de abas (as abas são montadas no navegador)."""
+    lines, out, i, fence = body.split("\n"), [], 0, False
+    while i < len(lines):
+        line = lines[i]
+        if re.match(r"^\s*(```|~~~)", line):
+            fence = not fence
+        if fence or not re.match(r"^:::\s*tabs\s*$", line):
+            out.append(line)
+            i += 1
+            continue
+        i += 1
+        panels, cur, inner = [], None, False
+        while i < len(lines):
+            l = lines[i]
+            if re.match(r"^\s*(```|~~~)", l):
+                inner = not inner
+            if not inner and re.match(r"^:::\s*$", l):
+                i += 1
+                break
+            m = None if inner else re.match(r"^===\s+(.+?)\s*$", l)
+            if m:
+                cur = [m.group(1).strip().strip('"'), []]
+                panels.append(cur)
+            elif cur is not None:
+                cur[1].append(l)
+            i += 1
+        out += ["", '<div class="tabs" markdown="1">', ""]
+        for title, content in panels:
+            out += [f'<div class="tabpanel" data-title="{esc(title)}" markdown="1">', "", *content, "", "</div>", ""]
+        out += ["</div>", ""]
+    return "\n".join(out)
+
+
 def preprocess(body):
+    body = convert_tabs(body)
     maths = []
     parts = re.split(r"(```.*?```|~~~.*?~~~)", body, flags=re.S)  # blocos de código ficam intactos
     for k in range(0, len(parts), 2):
@@ -293,6 +329,23 @@ POST_JS = """<script>
       var i=new Image();i.src=img.currentSrc||img.src;i.alt=img.alt;o.appendChild(i);
       o.addEventListener("click",function(){o.remove()});document.body.appendChild(o);
     });
+  });
+  document.querySelectorAll(".tabs").forEach(function(t,n){
+    var panels=[].slice.call(t.children).filter(function(c){return c.classList.contains("tabpanel")});
+    var bar=document.createElement("div");bar.className="tablist";bar.setAttribute("role","tablist");
+    var btns=[];
+    function sel(i,focus){btns.forEach(function(b,k){b.setAttribute("aria-selected",k===i?"true":"false");b.tabIndex=k===i?0:-1;panels[k].hidden=k!==i});if(focus)btns[i].focus()}
+    panels.forEach(function(p,i){
+      var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=p.dataset.title;
+      b.id="tab-"+n+"-"+i;p.id="panel-"+n+"-"+i;p.setAttribute("role","tabpanel");p.setAttribute("aria-labelledby",b.id);b.setAttribute("aria-controls",p.id);
+      b.addEventListener("click",function(){sel(i)});
+      b.addEventListener("keydown",function(e){
+        if(e.key==="ArrowRight"){e.preventDefault();sel((i+1)%panels.length,true)}
+        if(e.key==="ArrowLeft"){e.preventDefault();sel((i-1+panels.length)%panels.length,true)}
+      });
+      bar.appendChild(b);btns.push(b);
+    });
+    t.classList.add("js");t.insertBefore(bar,t.firstChild);sel(0);
   });
   document.addEventListener("keydown",function(e){if(e.key==="Escape"){var o=document.querySelector(".lb");if(o)o.remove()}});
 })();

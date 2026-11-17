@@ -59,6 +59,23 @@ SELECT 1;
 
 </details>
 
+## abas
+
+Mostram um conteúdo por vez (código em linguagens diferentes, gráfico e tabela, antes e depois). Cada `===` abre uma aba:
+
+::: tabs
+=== Python
+```python
+print("olá")
+```
+=== JavaScript
+```js
+console.log("olá");
+```
+=== texto
+Qualquer coisa em markdown, inclusive tabelas e imagens.
+:::
+
 ## fórmulas
 
 Em bloco: $$ E = mc^2 $$ e dentro da frase: \(a^2 + b^2 = c^2\).

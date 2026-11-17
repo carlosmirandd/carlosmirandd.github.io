@@ -78,6 +78,23 @@
       o.addEventListener("click",function(){o.remove()});document.body.appendChild(o);
     });
   });
+  document.querySelectorAll(".tabs").forEach(function(t,n){
+    var panels=[].slice.call(t.children).filter(function(c){return c.classList.contains("tabpanel")});
+    var bar=document.createElement("div");bar.className="tablist";bar.setAttribute("role","tablist");
+    var btns=[];
+    function sel(i,focus){btns.forEach(function(b,k){b.setAttribute("aria-selected",k===i?"true":"false");b.tabIndex=k===i?0:-1;panels[k].hidden=k!==i});if(focus)btns[i].focus()}
+    panels.forEach(function(p,i){
+      var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=p.dataset.title;
+      b.id="tab-"+n+"-"+i;p.id="panel-"+n+"-"+i;p.setAttribute("role","tabpanel");p.setAttribute("aria-labelledby",b.id);b.setAttribute("aria-controls",p.id);
+      b.addEventListener("click",function(){sel(i)});
+      b.addEventListener("keydown",function(e){
+        if(e.key==="ArrowRight"){e.preventDefault();sel((i+1)%panels.length,true)}
+        if(e.key==="ArrowLeft"){e.preventDefault();sel((i-1+panels.length)%panels.length,true)}
+      });
+      bar.appendChild(b);btns.push(b);
+    });
+    t.classList.add("js");t.insertBefore(bar,t.firstChild);sel(0);
+  });
   document.addEventListener("keydown",function(e){if(e.key==="Escape"){var o=document.querySelector(".lb");if(o)o.remove()}});
 })();
 </script>
