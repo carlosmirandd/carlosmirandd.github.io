@@ -85,13 +85,27 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 /* lists */
 .rows{list-style:none;margin:0;padding:0}
 .rows li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 20px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.rows li span:last-child{color:var(--mute);text-align:right}
+.rows li span:nth-child(2){color:var(--mute);text-align:right}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips a{border:1px solid var(--line);border-radius:99px;padding:3px 13px;font-size:12px;transition:border-color .15s}
 .chips a:hover,.chips a:focus-visible{border-color:var(--mute);outline:none}
+.rows li p{flex:0 0 100%;margin:4px 0 0;padding-right:14%;color:var(--mute);font-size:13px;line-height:1.6}
+@media(max-width:640px){.rows li p{padding-right:0}}
 .rows a{border-bottom:1px solid var(--mute)}
 .rows a:hover{color:var(--fg);border-color:var(--fg)}
+
+/* latest article */
+.latest{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,6fr);background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s}
+.latest:hover,.latest:focus-visible{transform:translateY(-3px);border-color:var(--mute);outline:none}
+.latest .lim{display:block;background:#070707;border-right:1px solid var(--line)}
+.latest .lim img{display:block;width:100%;height:100%;object-fit:contain}
+.latest .lb{display:flex;flex-direction:column;gap:8px;padding:20px 22px}
+.latest .lm{font-size:11px;color:var(--mute);letter-spacing:.04em}
+.latest .lt{font-family:Syne,sans-serif;font-weight:800;font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.latest .ld{font-size:13px;line-height:1.6;color:var(--mute)}
+.latest .lgo{margin-top:auto;padding-top:6px;font-size:12px;color:var(--accent)}
+@media(max-width:640px){.latest{grid-template-columns:1fr}.latest .lim{border-right:0;border-bottom:1px solid var(--line)}}
 
 /* contact */
 .mail{display:inline-block;font-size:clamp(12px,4vw,18px);white-space:nowrap;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:color .15s}
@@ -137,10 +151,25 @@ a *,button *{cursor:inherit}
       <img src="img/carlos.webp" alt="Retrato de Carlos Miranda" width="132" height="132">
       <div>
         <p>desenvolvedor e estudante de engenharia de computação.</p>
-        <span class="pill">dev na ventrium · lançando o EasyBeach</span>
+        <span class="pill">dev na ventrium · consultor na óriva · lançando o EasyBeach</span>
       </div>
     </div>
   </div>
+
+  <!-- journal:latest -->
+  <section id="artigo">
+    <h2>veja meu artigo mais recente</h2>
+    <a class="latest" href="/journal/google-ai-ultra-exploit-e-o-rolo-no-x/">
+      <span class="lim"><img src="/journal/google-ai-ultra-exploit-e-o-rolo-no-x/og.png" alt="Capa do artigo Google AI Ultra de graça por um ano? O exploit, o rolo no X e quem paga a conta" width="1200" height="630" loading="lazy"></span>
+      <span class="lb">
+        <span class="lm">18 nov 2026 · 35 min de leitura</span>
+        <span class="lt">Google AI Ultra de graça por um ano? O exploit, o rolo no X e quem paga a conta</span>
+        <span class="ld">Um relatório sobre o exploit do Play Billing que liberou o Google AI Ultra, a corrida no X e a discussão sobre quem deve arcar com a falha.</span>
+        <span class="lgo">ler o artigo →</span>
+      </span>
+    </a>
+  </section>
+  <!-- /journal:latest -->
 
   <section id="projetos">
     <h2>projetos</h2>
@@ -194,9 +223,21 @@ a *,button *{cursor:inherit}
   </section>
 
   <section>
+    <h2>agora</h2>
+    <ul class="rows">
+      <li><span><a href="https://ventrium.com.br/vendativa/" rel="noopener">Ventrium</a>, desenvolvedor</span><span>atual</span>
+        <p>Front e backend de um SPM, com React e Supabase.</p></li>
+      <li><span>ÓRIVA, consultor e arquiteto de soluções</span><span>atual</span>
+        <p>Voltei como consultor depois de sair da cofundação. Implantei o CRM da empresa, já funcionando: multiempresa, com WhatsApp e Instagram, API pública, automações, IA e cobrança, sobre Supabase. Também automatizei o processo da equipe com um bot de IA (grokbot).</p></li>
+      <li><span><a href="https://easybeach.app" rel="noopener">EasyBeach</a>, ideia, desenvolvimento e lançamento</span><span>atual</span>
+        <p>Da ideia ao lançamento do app para iOS e Android, junto com a equipe.</p></li>
+    </ul>
+  </section>
+
+  <section>
     <h2>antes</h2>
     <ul class="rows">
-      <li><span>ÓRIVA, cofundador: estratégia digital e landing pages</span><span>set/2024–abr/2026</span></li>
+      <li><span>ÓRIVA, cofundador e diretor: estratégia digital e landing pages</span><span>set/2024–abr/2026</span></li>
       <li><span>FAPERJ / IFRJ, aluno pesquisador: apps e sites acadêmicos</span><span>out/2021–mai/2023</span></li>
       <li><span>FACTO, monitor de robótica para escolas públicas; escrevi um capítulo da apostila</span><span>2022</span></li>
       <li><span>Fotógrafo e videomaker em eventos</span><span>jan/2023–abr/2026</span></li>

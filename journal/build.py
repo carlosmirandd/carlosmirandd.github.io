@@ -458,6 +458,38 @@ def feed(posts):
 """
 
 
+HOME = J.parent / "index.html"
+
+
+def home_latest(post):
+    """Atualiza o bloco 'veja meu artigo mais recente' da home (entre <!-- journal:latest --> e <!-- /journal:latest -->)."""
+    if not HOME.exists():
+        return
+    h = HOME.read_text(encoding="utf-8")
+    if "<!-- journal:latest -->" not in h:
+        return
+    img = (post.get("og_image") or "").replace(SITE, "")
+    pic = (f'<span class="lim"><img src="{esc(img)}" alt="Capa do artigo {esc(post["title"])}" width="1200" height="630" loading="lazy"></span>'
+           if img else "")
+    desc = f'<span class="ld">{esc(post["description"])}</span>' if post["description"] else ""
+    block = f"""<!-- journal:latest -->
+  <section id="artigo">
+    <h2>veja meu artigo mais recente</h2>
+    <a class="latest" href="/journal/{esc(post["slug"])}/">
+      {pic}
+      <span class="lb">
+        <span class="lm">{pt_date(post["date"])} · {post["minutes"]} min de leitura</span>
+        <span class="lt">{esc(post["title"])}</span>
+        {desc}
+        <span class="lgo">ler o artigo →</span>
+      </span>
+    </a>
+  </section>
+  <!-- /journal:latest -->"""
+    h = re.sub(r"<!-- journal:latest -->.*?<!-- /journal:latest -->", lambda m: block, h, count=1, flags=re.S)
+    HOME.write_text(h, encoding="utf-8")
+
+
 def main():
     posts = []
     for f in sorted(SRC.glob("*.md")):
@@ -488,6 +520,8 @@ def main():
         (out / "index.html").write_text(post_page(p, prev, nxt), encoding="utf-8")
     (J / "index.html").write_text(list_page(posts), encoding="utf-8")
     (J / "index.xml").write_text(feed(posts), encoding="utf-8")
+    if posts:
+        home_latest(posts[0])
     print(f"{len(posts)} post(s) publicados")
 
 
