@@ -385,8 +385,8 @@ def post_page(p, prev, nxt):
     p["html"] = content
     p["math"] = has_math
     img = p["image"] or (re.search(r'<img [^>]*src="([^"]+)"', content) or [None, None])[1]
-    if img and img.startswith("/"):
-        img = SITE + img
+    if img and not re.match(r"^https?://", img):  # caminho relativo à pasta do post ou da raiz do site
+        img = SITE + (img if img.startswith("/") else f"/journal/{p['slug']}/{img}")
     p["og_image"] = img
     tags = ", ".join(esc(t) for t in p["tags"])
     meta = f'<time datetime="{p["date"].isoformat()}">{pt_date(p["date"])}</time> · {p["minutes"]} min de leitura' + (f" · {tags}" if tags else "")
